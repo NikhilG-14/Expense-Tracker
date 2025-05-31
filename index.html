@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Expense Tracker</h1>
+        <p>Track your expenses and manage your budget easily.</p>
+    </header>
+
+    <div class="app-container">
+        <div class="main-panel">
+            <div class="balance-card">
+                <h4>Current Balance</h4>
+                <div class="balance-amount" id="balance">$0.00</div>
+                <div class="balance-change" id="balance-change">No change from last month</div>
+            </div>
+
+            <div class="inc-exp-grid">
+                <div class="inc-exp-card income">
+                    <h4>Total Income</h4>
+                    <div class="inc-exp-amount" id="money-plus">+$0.00</div>
+                    <div class="inc-exp-change" id="income-change">+0% from last month</div>
+                </div>
+                <div class="inc-exp-card expense">
+                    <h4>Total Expenses</h4>
+                    <div class="inc-exp-amount" id="money-minus">-$0.00</div>
+                    <div class="inc-exp-change" id="expense-change">+0% from last month</div>
+                </div>
+            </div>
+
+            <div class="form-advanced">
+                <h3>Add New Transaction</h3>
+                <form id="form">
+                    <div class="form-row">
+                        <div class="form-control">
+                            <label for="text">Description</label>
+                            <input type="text" id="text" placeholder="Enter transaction description..." autocomplete="off">
+                        </div>
+                        <div class="form-control amount-input">
+                            <label for="amount">Amount</label>
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="amount" placeholder="0.00" step="0.01" autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-control">
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option value="food">🍔 Food & Dining</option>
+                                <option value="transport">🚗 Transportation</option>
+                                <option value="shopping">🛍️ Shopping</option>
+                                <option value="entertainment">🎬 Entertainment</option>
+                                <option value="bills">📱 Bills & Utilities</option>
+                                <option value="health">🏥 Health & Medical</option>
+                                <option value="salary">💼 Salary</option>
+                                <option value="freelance">💻 Freelance</option>
+                                <option value="investment">📈 Investment</option>
+                                <option value="other">📦 Other</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label for="type">Type</label>
+                            <select id="type">
+                                <option value="expense">💸 Expense</option>
+                                <option value="income">💰 Income</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary">Add Transaction</button>
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="search" placeholder="Search transactions...">
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="income">Income</button>
+                <button class="filter-btn" data-filter="expense">Expenses</button>
+                <button class="filter-btn" data-filter="today">Today</button>
+                <button class="filter-btn" data-filter="week">This Week</button>
+                <button class="filter-btn" data-filter="month">This Month</button>
+            </div>
+
+            <div class="transaction-list" id="list"></div>
+        </div>
+
+        <div class="analytics-panel">
+            <h3>📊 Analytics Dashboard</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-transactions">0</div>
+                    <div class="stat-label">Total Transactions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avg-transaction">$0</div>
+                    <div class="stat-label">Average Transaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="largest-expense">$0</div>
+                    <div class="stat-label">Largest Expense</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="savings-rate">0%</div>
+                    <div class="stat-label">Savings Rate</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Spending by Category</div>
+                    <div class="time-filter">
+                        <button class="active">Week</button>
+                        <button>Month</button>
+                        <button>Year</button>
+                    </div>
+                </div>
+                <div class="progress-bars" id="category-chart"></div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Recent Activity</div>
+                </div>
+                <div id="recent-activity"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        &copy; 2025 Expense Tracker &mdash; Made with ❤️ by <a href="#">Nikhil Goyal</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
